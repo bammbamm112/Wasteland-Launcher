@@ -1,0 +1,37 @@
+name: Build Wasteland Fire TV APK
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Projektdateien laden
+        uses: actions/checkout@v4
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Gradle 8.7 einrichten
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: Android APK fuer Fire TV bauen
+        run: gradle assembleDebug --stacktrace
+
+      - name: Fertige APK umbenennen
+        run: cp app/build/outputs/apk/debug/app-debug.apk Wasteland-TV-Launcher-FireTV-v1.0.apk
+
+      - name: Fertige APK zum Download bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Wasteland-TV-Launcher-FireTV-APK
+          path: Wasteland-TV-Launcher-FireTV-v1.0.apk
+          retention-days: 90
