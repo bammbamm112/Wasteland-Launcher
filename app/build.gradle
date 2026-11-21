@@ -1,0 +1,33 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'de.wasteland.launcher'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "de.wasteland.launcher"
+        minSdk 22
+        targetSdk 28
+        versionCode 2
+        versionName "1.0-wasteland"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wasteland TV Launcher</string>
+    <string name="accessibility_service_label">Wasteland Home-Taste</string>
+    <string name="accessibility_service_description">Leitet die Home-Taste sicher auf den Wasteland TV Launcher um, ohne den originalen Amazon-Launcher zu entfernen.</string>
+</resources>

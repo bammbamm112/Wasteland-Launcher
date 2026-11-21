@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B110C">
+
+    <!-- Zwei gestapelte Bild-Ebenen fuer weiches Ueberblenden (Crossfade) -->
+    <ImageView
+        android:id="@+id/bg_image_a"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_01_mojave_red_rocket" />
+
+    <ImageView
+        android:id="@+id/bg_image_b"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.0"
+        android:scaleType="centerCrop" />
+
+    <!-- Variante A: Prozentual in die Landschaft integrierte Schilder/Hotspots -->
+    <FrameLayout
+        android:id="@+id/world_hotspots_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Dezente Pip-Boy Uhr & Datum oben rechts -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/pip_clock_bg"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:paddingStart="14dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:id="@+id/pip_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="19:00"
+            android:textColor="#88FF96"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pip_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="SA, 21.11.2026"
+            android:textColor="#72CC7E"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Dezenter Einstellungs-Button oben links (oder Menue-Taste auf Fernbedienung) -->
+    <TextView
+        android:id="@+id/btn_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pip_card_selector"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="monospace"
+        android:paddingStart="12dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="7dp"
+        android:text="[PIP-OS]"
+        android:textColor="#88FF96"
+        android:textSize="12sp" />
+
+    <!-- Variante B: Dezentes Fallout-App-Dock am unteren Rand -->
+    <HorizontalScrollView
+        android:id="@+id/dock_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="24dp"
+        android:clipToPadding="false"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/dock_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+</FrameLayout>
