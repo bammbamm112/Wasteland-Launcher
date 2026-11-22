@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Optional: nur zum Nachladen eigener Zusatz-Bilder aus /sdcard/FalloutLauncher/Hintergruende -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
@@ -16,11 +16,13 @@
 
         <activity
             android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -29,7 +31,18 @@
             </intent-filter>
         </activity>
 
-        <!-- Sicherer Home-Tasten-Dienst fuer Fire OS 6 ohne Entfernen des Amazon-Launchers -->
+        <receiver
+            android:name=".BootAndWakeReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".HomeInterceptService"
             android:exported="true"

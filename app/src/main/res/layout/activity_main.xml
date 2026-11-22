@@ -5,13 +5,12 @@
     android:layout_height="match_parent"
     android:background="#0B110C">
 
-    <!-- Zwei gestapelte Bild-Ebenen fuer weiches Ueberblenden (Crossfade) -->
     <ImageView
         android:id="@+id/bg_image_a"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_01_mojave_red_rocket" />
+        android:src="@drawable/bg_01_traktor_oedland" />
 
     <ImageView
         android:id="@+id/bg_image_b"
@@ -20,11 +19,100 @@
         android:alpha="0.0"
         android:scaleType="centerCrop" />
 
-    <!-- Variante A: Prozentual in die Landschaft integrierte Schilder/Hotspots -->
+    <!-- Retro 1950er Fallout Roehrenfernseher (zeigt Testbild im Leerlauf + App-Startbild bei Fokus) -->
+    <FrameLayout
+        android:id="@+id/retro_tv_container"
+        android:layout_width="210dp"
+        android:layout_height="164dp"
+        android:background="@drawable/world_figure_selector"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <!-- Innerer Bildschirm (Testbild oder Sender-Startbild) -->
+        <ImageView
+            android:id="@+id/retro_tv_screen"
+            android:layout_width="124dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="48dp"
+            android:background="#121814"
+            android:scaleType="fitXY"
+            android:src="@drawable/tv_screen_standby" />
+
+        <!-- Fallback-Overlay im Roehren-TV fuer eigene Zusatz-Apps (zeigt deren App-Icon + Name) -->
+        <LinearLayout
+            android:id="@+id/retro_tv_custom_overlay"
+            android:layout_width="124dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="48dp"
+            android:background="#E6101D14"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/retro_tv_custom_icon"
+                android:layout_width="34dp"
+                android:layout_height="34dp" />
+
+            <TextView
+                android:id="@+id/retro_tv_custom_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:fontFamily="monospace"
+                android:maxLines="1"
+                android:text="APP"
+                android:textColor="#88FF96"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="[KANAL BEREIT]"
+                android:textColor="#E2C274"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <!-- Verwittertes 1950er TV-Gehaeuse & Antennen -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/crt_tv_chassis" />
+    </FrameLayout>
+
+    <!-- Variante A: Fallout-Figuren (Powerrustung, Vault-Boy, Todeskralle, Nuka-Cola, Red Rocket, RobCo + Platzhalter) -->
     <FrameLayout
         android:id="@+id/world_hotspots_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+    <!-- Hinweis-Banner im freien Platzierungs-Modus -->
+    <TextView
+        android:id="@+id/placement_hud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pip_card_focused"
+        android:fontFamily="monospace"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="PLATZIERUNG: Steuerkreuz = Verschieben | OK = Speichern"
+        android:textColor="#88FF96"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <!-- Dezente Pip-Boy Uhr & Datum oben rechts -->
     <LinearLayout
@@ -46,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="19:00"
+            android:text="20:15"
             android:textColor="#88FF96"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -61,7 +149,7 @@
             android:textSize="11sp" />
     </LinearLayout>
 
-    <!-- Dezenter Einstellungs-Button oben links (oder Menue-Taste auf Fernbedienung) -->
+    <!-- Dezenter PIP-OS Einstellungs-Button oben links -->
     <TextView
         android:id="@+id/btn_settings"
         android:layout_width="wrap_content"
