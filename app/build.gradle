@@ -8,26 +8,28 @@ android {
 
     defaultConfig {
         applicationId "de.wasteland.launcher"
-        minSdk 22
+        minSdk 25
         targetSdk 28
-        versionCode 5
-        versionName "5.0-wasteland-crt"
+        versionCode 8
+        versionName "6.2"
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-        }
         release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }

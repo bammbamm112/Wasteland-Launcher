@@ -1,0 +1,21 @@
+================================================================================
+  GITHUB UPLOAD CHECKLISTE - SO STARTET DER APK-BUILD GARANTIERT
+================================================================================
+
+Wenn du diesen Ordner ("GitHub_Upload") in dein GitHub-Repository hochlaedst,
+muessen auf der obersten Ebene deines GitHub-Repositories genau diese 5 Eintraege
+zu sehen sein:
+
+  [x] .github          (ganz wichtig! Darin liegt workflows/build_apk.yml)
+  [x] app              (darin liegt der komplette Quellcode + alle 24 Bilder)
+  [x] build.gradle
+  [x] settings.gradle
+  [x] gradle.properties
+
+TIPP FUER DEN BROWSER-UPLOAD AUF GITHUB:
+- Oeffne auf deinem Laptop den Ordner "GitHub_Upload".
+- Druecke Strg + A (alles markieren) und ziehe alles gemeinsam in das
+  GitHub-Upload-Fenster (nicht den uebergeordneten Ordner "GitHub_Upload").
+- Wenn oben auf GitHub der Reiter "Actions" deinen Workflow
+  "Wasteland TV Launcher v6.2 APK bauen" anzeigt, hat alles geklappt!
+================================================================================
